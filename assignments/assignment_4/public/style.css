@@ -1,0 +1,12 @@
+.null-entry{
+    color: rgb(219, 219, 22);
+}
+
+.promoted-entry{
+    color: rgb(13, 233, 13);
+}
+
+.demoted-entry{
+    color: rgb(241, 10, 10);
+
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./style.css" rel="stylesheet" type="text/css"/>
+    <title>Document</title>
+    <style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+    </style>
+
+</head>
+<body>
+  <table style="width: 100%">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Select</th>
+      <th>Delete</th>
+    </tr>
+       <% users.forEach((user)=>{ %>
+            
+                
+                <% if (user.isPromoted==null){%>
+                    <tr class="null-entry">
+                        <td><%= user.name%></td>
+                        <td><%= user.email%></td>
+                        <td>
+                          <form method="POST" action="/users/<%= user._id %>?_method=PUT">
+                            <button id="edit-<%= user.name %>" type="submit">Prometed/Demoted</button>
+                        </form>
+                      </td>
+                      <td>
+                        <form method="POST" action="/users/<%= user._id %>?_method=DELETE">
+                            <button id="delete-<%= user.name %>">Delete</button>
+                        </form>       
+                        </td>
+                    </tr>
+                <% } else if(user.isPromoted==true) { %>  
+                    <tr class="promoted-entry">
+                        <td><%= user.name%></td>
+                        <td><%= user.email%></td>
+                        <td>
+                          <form method="POST" action="/users/<%= user._id %>?_method=PUT">
+                            <button id="edit-<%= user.name %>" type="submit">Prometed/Demoted</button>
+                        </form>
+                      </td>
+                      <td>
+                        <form method="POST" action="/users/<%= user._id %>?_method=DELETE">
+                            <button id="delete-<%= user.name %>">Delete</button>
+                        </form>       
+                        </td>
+                    </tr>
+                <% } else if(user.isPromoted==false){ %>  
+                    <tr class="demoted-entry">
+                        <td><%= user.name%></td>
+                        <td><%= user.email%></td>
+                        <td>
+                          <form method="POST" action="/users/<%= user._id %>?_method=PUT">
+                            <button id="edit-<%= user.name %>" type="submit">Prometed/Demoted</button>
+                        </form>
+                      </td>
+                      <td>
+                        <form method="POST" action="/users/<%= user._id %>?_method=DELETE">
+                            <button id="delete-<%= user.name %>">Delete</button>
+                        </form>       
+                        </td>
+                    </tr>  
+                    <%}%> 
+       <%}) %>
+    <table>
+    <br />
+    <button class="button"><a href="/form">Add</a></button>
+</body>
+</html> 
